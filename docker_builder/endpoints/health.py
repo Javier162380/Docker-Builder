@@ -4,4 +4,4 @@ sys.path.append('..')
 
 async def health():
     
-    return ''
+    return 'Up and running!'

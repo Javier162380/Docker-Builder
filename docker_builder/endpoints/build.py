@@ -3,7 +3,7 @@ import time
 from rq import Queue
 
 sys.path.append('..')
-from settings import Q, BUILD_TIEMOUT, FAILED_JOB_TIEMOUT, SUCCESSFUL_JOB_TIMEOUT
+from settings import Q, BUILD_TIMEOUT, FAILED_JOB_TIMEOUT, SUCCESSFUL_JOB_TIMEOUT
 from worker import conn
 from models import Build
 
