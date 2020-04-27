@@ -11,12 +11,10 @@ from settings import Q, BUILD_TIMEOUT, FAILED_JOB_TIMEOUT, SUCCESSFUL_JOB_TIMEOU
 
 def build_submit(build: Build):
 
-    build_instance = Build(build_instance=build)
+    build_instance = Builder(build_instance=build)
     build_instance.execute()
 
 async def build_docker(build: Build):
-
-    builder = Builder(build_instance=build)
     
     result = Q.enqueue(
         build_submit,
