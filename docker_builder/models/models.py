@@ -1,15 +1,21 @@
-from typing import List
+from typing import List, Dict
 
 from pydantic import BaseModel
 
 
 class Build(BaseModel):
     dockerfile: str
-    tags: List[str]
     image_name: str
-    image_registry: str
+    tags: List[str] = ["latest"]
+    image_registry: str = None
+    args: Dict = None
     github_repository: str = None
+
 
 class Status(BaseModel):
     build_id: str
     build_status: str
+
+
+class BuildResponse(BaseModel):
+    build_id: str
