@@ -2,8 +2,8 @@ version: 2
 
 jobs:
   build-and-test:
-    machine:
-      image: cimg/base:2020.01
+    docker:
+      - image: ubuntu:20.04
     steps:
       - checkout
       - run: |
