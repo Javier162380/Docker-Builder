@@ -1,6 +1,6 @@
 FROM python:3.7 AS builder
 # Set application name
-ARG APP_NAME=docker_builder
+ARG APP_NAME=docker-builder
 
 # Install poetry
 RUN pip install poetry
