@@ -27,6 +27,9 @@ class Builder:
     def dockerfile_name(self):
         path, dockerfile = os.path.split(self.build_instance.dockerfile)
 
+        if dockerfile == '':
+            return path
+
         return dockerfile
 
     def build_image(self):
