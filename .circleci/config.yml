@@ -3,7 +3,7 @@ version: 2
 jobs:
   build-and-test:
     machine:
-      image: ubuntu:20.04
+      image: cimg/base:2020.01
     steps:
       - checkout
       - run: |
