@@ -6,9 +6,7 @@ jobs:
       - image: ubuntu:20.04
     steps:
       - checkout
-      - run: |
-          sudo apt install docker.io
-          sudo apt install docker-compose
+      - setup_remote_docker
       - run: docker-compose -f docker-compose-test.yaml run api
 workflows:
   version: 2
