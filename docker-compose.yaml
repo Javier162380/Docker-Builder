@@ -4,11 +4,14 @@ services:
      build: .
      command: ["uvicorn","app:app", "--reload" ,"--port" ,"8080"] 
      ports: 
-     - 8080:8080
+     - "8080:8080"
+     expose: 
+     - "8080"
      environment: 
       REDIS_URL: redis://redis:6379
      depends_on:
      - redis
+     - worker
    redis:
      image: "redis:alpine"
      ports: 
@@ -26,5 +29,4 @@ services:
      - redis
 volumes:  
   redis_data:
-
 
