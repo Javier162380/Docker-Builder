@@ -1,5 +1,6 @@
 import pytest
-import docker
+import pytest
+from docker import APIClient
 from docker_builder.builder import Builder
 from rq.job import Job
 
@@ -23,18 +24,34 @@ def test_build_instance_repositroy(TestBuilderRepository):
 
 
 def test_build_instance_composition(TestBuilderNoRepository):
-    assert isinstance(TestBuilderNoRepository.docker_instance, docker.APIClient)
+    assert isinstance(TestBuilderNoRepository.docker_instance, APIClient)
     assert isinstance(TestBuilderNoRepository.job, Job)
 
+## TODO:Refactor this test
 # def test_build_image(TestBuilderNoRepository, mocker):
-#     mocker.patch.object(docker, 'APIClient')
+#     mocker.patch.object(APIClient, 'build')
 
 #     TestBuilderNoRepository.build_image()
 
-#     docker.APIClient.build.assert_called_once_with(path='',
+#     APIClient.build.assert_called_once_with(path='',
 #                                              dockerfile='Dockerfile',
 #                                              tag='test',
-#                                              buildargs={})
+#                                             buildargs={})
+
+## TODO: Refactor this test
+# def test_push_image(TestBuilderRepository, mocker):
+#     mocker.patch.object(APIClient, 'push', autospec=True)
+
+#     TestBuilderRepository.push_image('prod')
+
+#     APIClient.push.assert_called_once_with('javier162380/test', tag='prod', stream=True, decode=True)
+
+def test_tag_image(TestBuilderRepository, mocker):
+    mocker.patch.object(APIClient, 'tag')
+
+    TestBuilderRepository.tag_image('prod')
+
+    APIClient.tag.assert_called_once_with('test', 'javier162380/test', tag='prod')
 
 
 def test_execute(TestBuilderNoRepository, mocker):

@@ -49,20 +49,25 @@ class Builder:
         self.job.save_meta()
 
     def build_image(self):
-        for output in self.docker_instance.build(
+
+        generator_object = self.docker_instance.build(
                 path=self.dockerfile_path, dockerfile=self.dockerfile_name, tag=self.build_instance.image_name,
                 buildargs=self.build_instance.args if self.build_instance.args else {},
-                decode=True):
-            yield output
+                decode=True)
+
+        for stream in generator_object:
+            yield stream
 
     def tag_image(self, tag):
         
         return self.docker_instance.tag(self.build_instance.image_name, self.format_image_name, tag=tag)
 
     def push_image(self, tag):
-        for output in self.docker_instance.push(
-                self.format_image_name, tag=tag, stream=True, decode=True):
-            yield output
+        generator_object =  self.docker_instance.push(
+                self.format_image_name, tag=tag, stream=True, decode=True)
+
+        for stream in generator_object:
+            yield stream
 
     def execute(self):
 

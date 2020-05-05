@@ -12,6 +12,9 @@ async def check_execution(build_id: str) -> Execution:
     try:
         job = Job.fetch(build_id, connection=conn)
         status = job.meta
+        if status == {}:
+            status = []
+
         return Execution(build_id=build_id, build_execution=job.meta)
 
     except rq.exceptions.NoSuchJobError:
