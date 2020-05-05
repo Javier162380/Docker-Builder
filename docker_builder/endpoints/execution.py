@@ -7,7 +7,7 @@ from models import Execution
 from worker import conn
 
 
-async def check_execution(build_id: str):
+async def check_execution(build_id: str) -> Execution:
 
     try:
         job = Job.fetch(build_id, connection=conn)

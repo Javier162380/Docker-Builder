@@ -7,7 +7,7 @@ from worker import conn
 from models import Status
 
 
-async def check_status(build_id: str):
+async def check_status(build_id: str) -> Status:
 
     try:
         job = Job.fetch(build_id, connection=conn)

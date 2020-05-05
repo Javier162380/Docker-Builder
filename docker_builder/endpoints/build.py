@@ -14,10 +14,10 @@ def build_submit(build: Build, job_id: str):
     build_instance = Builder(build_instance=build, job_id=job_id)
     build_instance.execute()
 
-async def build_docker(build: Build):
+async def build_docker(build: Build) -> BuildResponse:
     
     job_id = str(uuid.uuid4())
-    
+
     result = Q.enqueue(
         build_submit,
         kwargs={'build':build, 'job_id': job_id},

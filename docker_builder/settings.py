@@ -1,5 +1,4 @@
 import os
-import multiprocessing
 
 from rq import Queue
 from rq.job import Job
