@@ -5,12 +5,12 @@ Efficient web service to build your docker images.
 
 ## Local Enviroment
 
-```
+```bash
 docker-compose up
 ```
 
 ## Testing
 
-```
+```bash
 docker-compose -f docker-compose-test.yaml run api
 ```

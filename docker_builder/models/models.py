@@ -16,6 +16,9 @@ class Status(BaseModel):
     build_id: str
     build_status: str
 
+class Execution(BaseModel):
+    build_id: str
+    build_execution: List
 
 class BuildResponse(BaseModel):
     build_id: str

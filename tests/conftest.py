@@ -12,8 +12,18 @@ def TestApp():
 
 
 @pytest.fixture
-def TestBuilder():
+def TestBuilderNoRepository():
 
-    return Builder(build_instance=(Build(dockerfile='Dockerfile',
+    return Builder(build_instance=Build(dockerfile='Dockerfile',
                                          image_name='test',
-                                         tags=['prod', 'latest'])))
+                                         tags=['prod', 'latest']),
+                  job_id='asfsdfsf-sdfdsf')
+
+@pytest.fixture
+def TestBuilderRepository():
+
+    return Builder(build_instance=Build(dockerfile='Dockerfile',
+                                         image_name='test',
+                                         tags=['prod', 'latest'],
+                                         image_registry='javier162380'),
+                   job_id='asfsdfsf-sdfdsf')

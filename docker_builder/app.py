@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from router import router
 
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
