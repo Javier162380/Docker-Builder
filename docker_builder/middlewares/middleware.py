@@ -1,7 +1,7 @@
 import sys
 from fastapi import HTTPException
 from fastapi import Header
-from starlette.status import HTTP_403_FORBIDDEN, HTTP_400_BAD_REQUEST
+from starlette.status import HTTP_403_FORBIDDEN
 sys.path.append('..')
 from settings import API_KEY
 
