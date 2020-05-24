@@ -7,7 +7,12 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from router import router
 
 
-app = FastAPI()
+app = FastAPI(
+    title='Docker Builder',
+    version='0.1.0',
+    description='Efficient webservice to build docker images',
+    
+)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
