@@ -6,7 +6,7 @@ from docker_builder.builder import Builder
 from docker_builder.models import Build
 
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def TestApp():
     return TestClient(app)
 
