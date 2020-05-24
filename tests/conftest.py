@@ -6,9 +6,13 @@ from docker_builder.builder import Builder
 from docker_builder.models import Build
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture
 def TestApp():
     return TestClient(app)
+
+@pytest.fixture
+def mock_env_api_key(monkeypatch):
+    monkeypatch.setenv('API_KEY', '1234')
 
 
 @pytest.fixture
