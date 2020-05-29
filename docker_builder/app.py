@@ -33,9 +33,10 @@ app.include_router(router.router)
 async def get_documentation():
     return get_swagger_ui_html(openapi_url="/openapi.json", title="Docker Builder")
 
+
 @app.get("/openapi.json",
-          dependencies=[Depends(get_current_username)],
-          include_in_schema=False)
+         dependencies=[Depends(get_current_username)],
+         include_in_schema=False)
 async def get_open_api_endpoint():
     return JSONResponse(get_openapi(title="Docker Builder",
                                     description="Efficient Web Service to build Docker Images",
